@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>首頁</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    <link rel="stylesheet" href="../src/font.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous">
+    <script src="https://kit.fontawesome.com/9d0690b173.js" crossorigin="anonymous"></script>
+</head>
+<body>
+
+  <div id="app">
+    <!-- 上層 Navbar -->
+    <div class="top-bar d-flex justify-content-between align-items-center">
+      <!--
+      <div class="logo">
+        <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
+          <i class="fa-solid fa-bars me-2"></i>MORE
+        </button>
+      </div>
+    -->
+      <div class="logoword d-inline-block">
+        <p class="m-0 p-0"><i class="fa-regular fa-bookmark me-2"></i>DAILYPAPER</p>
+      </div>
+    
+      <div class="media-links">
+        <div class="media-links-time">
+          <i class="fa-solid fa-clock me-2"></i>{{now}}
+        </div>
+        <div class="media-link">
+          <a href="#"><i class="fa-brands fa-facebook"></i></a>
+          <a href="#"><i class="fa-brands fa-instagram"></i></a>
+          <a href="#"><i class="fa-brands fa-threads"></i></a>
+        </div>
+        
+      </div>
+    </div>
+ <!--
+    <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+      <div class="offcanvas-header d-flex justify-content-end">
+        <div data-bs-dismiss="offcanvas" aria-label="Close" class="offc d-flex ailgn-items-center"><i class="fa-solid fa-xmark me-2"></i>CLOSE</div>
+      </div>
+      <div class="offcanvas-body">
+        <div class="off-title">Popular Articles</div>
+        <ul class="m-0 p-3">
+          <li>12</li>
+          <li>12</li>
+          <li>12</li>
+          <li>12</li>
+          <li>12</li>
+          <li>12</li>
+        </ul>
+        <div class="off-title">Popular Articles</div>
+      </div>
+    </div>
+
+  -->
+    <div class="top-bar-two">ABOUT ME</div>
+  
+    <!-- 下層功能列 -->
+    <nav :class="['menu-bar', { fixed: isFixed }]" ref="menubar">
+      <ul class="nav justify-content-center">
+        <li class="nav-item"><a class="nav-link" href="#">HOME</a></li>
+        <li class="nav-item"><a class="nav-link" href="#">LAYOUT</a></li>
+        <li class="nav-item"><a class="nav-link" href="#">NEWS</a></li>
+        <li class="nav-item"><a class="nav-link" href="#">JOBS</a></li>
+      </ul>
+    </nav>
+  
+    <!-- 主內容 -->
+    <main class="mt-4 mb-4">
+      <div class="row m-0 d-flex ailgn-items-center justify-content-center">
+        <div class="col-10">
+
+          <div class="row gx-4 gy-2">
+
+            <div class="col-12 col-md-6 col-xl-3 gray" v-for="i in 4">
+              <img src="" alt="">
+              <div class="title p-0 px-1">
+                <p class="m-0 p-0">Lorem ipsum</p>
+                <p class="m-0 p-0 text-secondary">Lorem ipsum, dolor sit amet.</p>
+              </div>
+            </div>
+
+
+          </div>
+
+          <div class="row mt-4 mb-4">
+            <div class="content col-12 col-lg-8">
+              <div class="p-3 countdays">
+                Since 【 My BirthDay 】
+                <!--
+                {{ start }}
+                -->
+                <div class="dayscol row">
+                  <div class="col-10 col-sm-2 days">
+                    <h1 class="m-0">{{ elapsed.y }}</h1>
+                    <p class="m-0 p-0">YEAR</p>
+                  </div>
+                  <div class="col-10 col-sm-2 days">
+                    <h1 class="m-0">{{ elapsed.m }}</h1>
+                    <p class="m-0 p-0">MONTH</p>
+                  </div>
+                  <div class="col-10 col-sm-2 days">
+                    <h1 class="m-0">{{ elapsed.d }}</h1>
+                    <p class="m-0 p-0">DAY</p>
+                  </div>
+                </div>
+              <!--
+                <strong>{{ elapsed.y }}</strong> 年
+                <strong>{{ elapsed.m }}</strong> 月
+                <strong>{{ elapsed.d }}</strong> 日
+              -->
+              </div>
+              <img class="mt-3" src="" alt="">
+              <h2 class="mt-2 mb-2">Lorem ipsum dolor sit amet consectetur adipisicing elit. </h2>
+              <p class="m-0 p-0 text-secondary">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Illum neque veniam officiis perspiciatis magni enim dicta pariatur dolore voluptate molestiae quibusdam voluptatem assumenda, quo ea, delectus at cumque blanditiis alias.<br>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Illum neque veniam officiis perspiciatis magni enim dicta pariatur dolore voluptate molestiae quibusdam voluptatem assumenda, quo ea, delectus at cumque blanditiis alias.<br>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Illum neque veniam officiis perspiciatis magni enim dicta pariatur dolore voluptate molestiae quibusdam voluptatem assumenda, quo ea, delectus at cumque blanditiis alias.<br>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Illum neque veniam officiis perspiciatis magni enim dicta pariatur dolore voluptate molestiae quibusdam voluptatem assumenda, quo ea, delectus at cumque blanditiis alias.<br>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Illum neque veniam officiis perspiciatis magni enim dicta pariatur dolore voluptate molestiae quibusdam voluptatem assumenda, quo ea, delectus at cumque blanditiis alias.<br>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Illum neque veniam officiis perspiciatis magni enim dicta pariatur dolore voluptate molestiae quibusdam voluptatem assumenda, quo ea, delectus at cumque blanditiis alias.<br>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Illum neque veniam officiis perspiciatis magni enim dicta pariatur dolore voluptate molestiae quibusdam voluptatem assumenda, quo ea, delectus at cumque blanditiis alias.</p>
+              
+              <div class="mt-3 d-inline-block d-lg-none">
+                <div class="off-title">Popular Articles</div>
+                <div class="osusume_list py-3" v-for="i in 5">
+                  <div class="title">
+                    Lorem ipsum dolor sit amet consectetur Lorem ipsum dolor sit amet consectetur
+                  </div>
+                  <div class="date text-secondary">2025-10-{{i}}  •  {{i*40-2}} VIEWS</div>
+                  
+                </div>
+
+                <div class="off-title">Trending</div>
+
+              <div class="osusume_list py-3" v-for="i in 5">
+                <div class="title">
+                  Lorem ipsum dolor sit amet consectetur Lorem ipsum dolor sit amet consectetur
+                </div>
+                <div class="date text-secondary">2025-10-{{i}}  •  {{i*40-2}} VIEWS</div>
+              </div>
+
+              <div class="off-title mb-1">Hashtags</div>
+              
+              <div class="tags d-inline-block mt-2 me-2 px-2 py-1" v-for="i in 17"># {{i}}</div>
+
+              </div>
+
+
+            </div>
+            <div class="osusume col-4 d-none d-lg-inline-block">
+              <div class="off-title">Popular Articles</div>
+
+              <div class="osusume_list py-3" v-for="i in 5">
+                <div class="title">
+                  Lorem ipsum dolor sit amet consectetur Lorem ipsum dolor sit amet consectetur
+                </div>
+                <div class="date text-secondary">2025-10-{{i}}  •  {{i*40-2}} VIEWS</div>
+                
+              </div>
+
+              <div class="off-title">Trending</div>
+
+              <div class="osusume_list py-3" v-for="i in 5">
+                <div class="title">
+                  Lorem ipsum dolor sit amet consectetur Lorem ipsum dolor sit amet consectetur
+                </div>
+                <div class="date text-secondary">2025-10-{{i}}  •  {{i*40-2}} VIEWS</div>
+              </div>
+
+              <div class="off-title mb-1">Hashtags</div>
+              
+              <div class="tags d-lg-inline-block mt-2 me-2 px-2 py-1" v-for="i in 17"># {{i}}</div>
+
+            </div>
+          </div>
+
+        </div>
+      </div>
+      
+    </main>
+
+    <!--footer-->
+    <footer class="text-center w100 p-0 m-0 py-3">© Copyright 2023, All rights reserved. Design by ME</footer>
+  </div>
+
+    
+
+</body>
+<script type="module" src="app.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"></script>
+
+</html>
