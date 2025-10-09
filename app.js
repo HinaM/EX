@@ -1,4 +1,3 @@
-import { courseList, classList } from '../src/course.js';
 
 new Vue({
   el: '#app',
@@ -75,3 +74,4 @@ new Vue({
     }
   }
 });
+
