@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="../src/font.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous">
     <script src="https://kit.fontawesome.com/9d0690b173.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 </head>
 <body>
 
@@ -24,17 +25,18 @@
       </div>
     -->
       <div class="logoword d-inline-block">
-        <p class="m-0 p-0"><i class="fa-regular fa-bookmark me-2"></i>DAILYPAPER</p>
+        <p class="m-0 p-0"><i class="fa-regular fa-newspaper me-2"></i>聖苑高等學府</p>
       </div>
     
       <div class="media-links">
         <div class="media-links-time">
-          <i class="fa-solid fa-clock me-2"></i>{{now}}
+          <i class="fa-regular fa-calendar-days me-2"></i>{{now}}
         </div>
         <div class="media-link">
           <a href="#"><i class="fa-brands fa-facebook"></i></a>
           <a href="#"><i class="fa-brands fa-instagram"></i></a>
           <a href="#"><i class="fa-brands fa-threads"></i></a>
+          
         </div>
         
       </div>
@@ -59,7 +61,7 @@
     </div>
 
   -->
-    <div class="top-bar-two">ABOUT ME</div>
+    <div class="top-bar-two">《聖苑學生報》</div>
   
     <!-- 下層功能列 -->
     <nav :class="['menu-bar', { fixed: isFixed }]" ref="menubar">
@@ -78,11 +80,35 @@
 
           <div class="row gx-4 gy-2">
 
-            <div class="col-12 col-md-6 col-xl-3 gray" v-for="i in 4">
+            <div class="col-12 col-md-6 col-xl-3 gray">
               <img src="" alt="">
               <div class="title p-0 px-1">
-                <p class="m-0 p-0">Lorem ipsum</p>
-                <p class="m-0 p-0 text-secondary">Lorem ipsum, dolor sit amet.</p>
+                <p class="m-0 p-0">白清 | 高一</p>
+                <p class="m-0 p-0 text-secondary tags d-inline">#請問女神學妹的詩集哪裡買</p>
+              </div>
+            </div>
+
+            <div class="col-12 col-md-6 col-xl-3 gray">
+              <img src="" alt="">
+              <div class="title p-0 px-1">
+                <p class="m-0 p-0">白承曜 | 高三</p>
+                <p class="m-0 p-0 text-secondary tags d-inline">#妹妹的無死角全能守護者</p>
+              </div>
+            </div>
+
+            <div class="col-12 col-md-6 col-xl-3 gray">
+              <img src="" alt="">
+              <div class="title p-0 px-1">
+                <p class="m-0 p-0">賀淵白 | 高三</p>
+                <p class="m-0 p-0 text-secondary tags d-inline">#學生會長今天也鎮壓全場</p>
+              </div>
+            </div>
+
+            <div class="col-12 col-md-6 col-xl-3 gray">
+              <img src="" alt="">
+              <div class="title p-0 px-1">
+                <p class="m-0 p-0">賀璟生 | 高二</p>
+                <p class="m-0 p-0 text-secondary tags d-inline">#哥跑的社團比你吃過的米還多</p>
               </div>
             </div>
 
@@ -92,7 +118,7 @@
           <div class="row mt-4 mb-4">
             <div class="content col-12 col-lg-8">
               <div class="p-3 countdays">
-                Since 【 My BirthDay 】
+                【 聖苑高等學府 】創校
                 <!--
                 {{ start }}
                 -->
@@ -117,9 +143,93 @@
               -->
               </div>
               <img class="mt-3" src="" alt="">
-              <h2 class="mt-2 mb-2">Lorem ipsum dolor sit amet consectetur adipisicing elit. </h2>
-              <p class="m-0 p-0 text-secondary">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Illum neque veniam officiis perspiciatis magni enim dicta pariatur dolore voluptate molestiae quibusdam voluptatem assumenda, quo ea, delectus at cumque blanditiis alias.<br>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Illum neque veniam officiis perspiciatis magni enim dicta pariatur dolore voluptate molestiae quibusdam voluptatem assumenda, quo ea, delectus at cumque blanditiis alias.<br>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Illum neque veniam officiis perspiciatis magni enim dicta pariatur dolore voluptate molestiae quibusdam voluptatem assumenda, quo ea, delectus at cumque blanditiis alias.<br>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Illum neque veniam officiis perspiciatis magni enim dicta pariatur dolore voluptate molestiae quibusdam voluptatem assumenda, quo ea, delectus at cumque blanditiis alias.<br>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Illum neque veniam officiis perspiciatis magni enim dicta pariatur dolore voluptate molestiae quibusdam voluptatem assumenda, quo ea, delectus at cumque blanditiis alias.<br>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Illum neque veniam officiis perspiciatis magni enim dicta pariatur dolore voluptate molestiae quibusdam voluptatem assumenda, quo ea, delectus at cumque blanditiis alias.<br>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Illum neque veniam officiis perspiciatis magni enim dicta pariatur dolore voluptate molestiae quibusdam voluptatem assumenda, quo ea, delectus at cumque blanditiis alias.</p>
+              <h2 class="mt-2 mb-2">「聖苑傳說四人組」——戀愛修羅、學院神話，真相其實是這樣？</h2>
               
+              <div class="p-2 my-3 countdayslittle">從開學至今，我們的校園不知不覺圍繞起了四個「不容忽視」的人物——他們之間的關係，簡直可以拍成一部八點檔，還是那種人氣衝破校園論壇伺服器的劇情級別。</div>
+              <div class="text-end">學生記者／小K</div>
+
+              <h4 class="my-3">【白清｜一年級・文學靜思社社長】</h4>
+              <p class="m-0 p-0 text-secondary" style="line-height: 1.8;">
+                
+                文學靜思社社長、學年詩集首席編輯、匿名論壇上票選「最難靠近但最想認識的女生」第一名！
+                <br>
+                她幾乎不參加課堂以外的活動，體能課全勤但表現……嗯，讓人心疼；詩集賣得比校刊還快，卻從未在班級群組講超過三句話。她是那種你搭話三次不一定會回，但只要她一說「謝謝」，你會開心三天的存在。
+                <br>
+                不過據傳——
+                <br>
+                她在家裡會對哥哥撒嬌。
+                <br>
+                體育課跑到第二圈就會倒在跑道邊，據說因為小時候身體欠佳！？
+                <br>
+                她的詩集在文化祭首日售罄，比隔壁甜點社的蛋糕還搶手！
+                <br>
+                女神，有血有肉，有哥哥，也有……兩位婚約者。
+              </p>
+              <hr>
+              <h4 class="my-3">【白承曜｜三年級・風紀委員長】</h4>
+              <p class="m-0 p-0 text-secondary" style="line-height: 1.8;">
+                總是面帶微笑、衣領永遠整齊的「白學長」、「白氏長子」，是這所學校女生公認的「溫柔學長典範」。
+                <br>
+                但。
+                <br>
+                白清是他的逆鱗，是真的——不能碰的那種。
+                <br>
+                傳聞中，凡是對白清多問兩句的男生，當天下午就會收到白學長禮貌而嚴肅的「關心」。
+                <br>
+                「她身體不太好」「請別對她造成負擔」「你是不是該先完成社團報告」這些話，全是白學長在「微笑中帶刀」的經典語錄。
+                <br>
+                更傳說某次文化祭，有人想搭訕白清，隔天他的社團場地莫名被學生會換到學校最邊邊……
+                <br>
+                不知真假，但沒人敢試。
+              </p>
+              <hr>
+              <h4 class="my-3">【賀淵白｜三年級・學生會長】</h4>
+              <p class="m-0 p-0 text-secondary" style="line-height: 1.8;">
+                全校最高氣場持有者，據說他才入學第一天就有學長說：「他那雙紅眼真的有在施壓力。」
+                <br>
+                他與白承曜是學生會的雙柱，時常同框發表政策，但有眼力的都知道：
+                <br>
+                他對別人是公事語氣，對白清，是微調過的語氣。
+                <br>
+                例如他會對社團說：「下週再交報告。」但會對白清說：「妳的資料我放辦公室了，等妳方便取。」
+                <br>
+                我們記者團最津津樂道的一幕是：文化祭當天，白清去後院曬太陽，賀會長直接從圖書館筆直走出，坐在她身邊。
+                <br>
+                據說那段時間，論壇出現了兩個討論串：「賀會長今天說了幾句話」與「白清今天耳尖紅了嗎」。
+                <br>
+                兩邊交錯更新、互相佐證！
+              </p>
+              <hr>
+              <h4 class="my-3">【賀璟生｜二年級・萬人迷】</h4>
+              <p class="m-0 p-0 text-secondary" style="line-height: 1.8;">
+                你不知道他在幾個社團，因為他什麼社團都在。攝影社、戲劇社、樂團、吉他社、校刊社、甚至還短暫出現在料理社試吃（？）。
+                <br>
+                如果白清是不可接近的月亮，那賀璟生就是全校開趴的聚光燈。
+                <br>
+                但！這位社交E人，最常出現的地方，是白清所在的文學靜思社門口。
+                <br>
+                據說，某次他提交的讀書心得是一張白清的速寫畫，旁邊還寫了：「這段詩，不如她的側臉有感情。」
+                <br>
+                結果被社團其他社員集體吐槽，但他一臉無所謂地說：「我喜歡把情感具象化。」
+                <br>
+                啊對了，他還會在戲劇社的演出中即興台詞對著後排觀眾席說：「我說的每一句，都不是戲。」
+                <br>
+                全校都知道那句話是說給誰聽的。
+              </p>
+              
+              
+              
+              
+              <div class="mt-3">
+                <div class="tag text-center">
+                  <div class="tags d-inline-block mt-2 me-2 px-2 py-1"># 學園戀愛現場</div>
+                  <div class="tags d-inline-block mt-2 me-2 px-2 py-1"># 冷臉女神與修羅場</div>
+                  <div class="tags d-inline-block mt-2 me-2 px-2 py-1"># 聖苑傳說四人組</div>
+                </div>
+              </div>
+
+              
+
               <div class="mt-3 d-inline-block d-lg-none">
                 <div class="off-title">Popular Articles</div>
                 <div class="osusume_list py-3" v-for="i in 5">
@@ -148,28 +258,35 @@
 
             </div>
             <div class="osusume col-4 d-none d-lg-inline-block">
-              <div class="off-title">Popular Articles</div>
+              <div class="off-title">NEW POST</div>
 
-              <div class="osusume_list py-3" v-for="i in 5">
+              <div class="osusume_list py-3" v-for="i in articles.slice(0,4)" :key="i.id">
                 <div class="title">
-                  Lorem ipsum dolor sit amet consectetur Lorem ipsum dolor sit amet consectetur
+                  {{i.article_title}}
                 </div>
-                <div class="date text-secondary">2025-10-{{i}}  •  {{i*40-2}} VIEWS</div>
+                <!--<p style="white-space: pre-line;">{{i.article_content}}</p>-->
+                <div class="date text-secondary">{{i.created_at}}  •  {{i.like}} LIKES</div>
                 
               </div>
 
-              <div class="off-title">Trending</div>
+              <div class="off-title">TRENDING</div>
 
-              <div class="osusume_list py-3" v-for="i in 5">
+              <div class="osusume_list py-3" v-for="i in sortByLikesDesc.slice(0,4)">
                 <div class="title">
-                  Lorem ipsum dolor sit amet consectetur Lorem ipsum dolor sit amet consectetur
+                  {{i.article_title}}
                 </div>
-                <div class="date text-secondary">2025-10-{{i}}  •  {{i*40-2}} VIEWS</div>
+                <div class="date text-secondary">{{i.created_at}}  •  {{i.like}} LIKES</div>
               </div>
 
               <div class="off-title mb-1">Hashtags</div>
               
-              <div class="tags d-lg-inline-block mt-2 me-2 px-2 py-1" v-for="i in 17"># {{i}}</div>
+              <div class="tags d-inline-block mt-2 me-2 px-2 py-1"># 聖苑高等學府</div>
+              <div class="tags d-inline-block mt-2 me-2 px-2 py-1"># 戀愛路上總有哥哥把關</div>
+              <div class="tags d-inline-block mt-2 me-2 px-2 py-1"># 本週誰又靠近白清了</div>
+              <div class="tags d-inline-block mt-2 me-2 px-2 py-1"># 貴族的婚約我不懂</div>
+              <div class="tags d-inline-block mt-2 me-2 px-2 py-1"># 學生的本分不是戀愛但全校愛看</div>
+              <div class="tags d-inline-block mt-2 me-2 px-2 py-1"># 白清與她的兩個婚約者</div>
+              <div class="tags d-inline-block mt-2 me-2 px-2 py-1"># 白承曜氣死在學生會</div>
 
             </div>
           </div>
@@ -186,7 +303,6 @@
     
 
 </body>
-<script type="module" src="app.js"></script>
+<script src="app.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"></script>
-
 </html>

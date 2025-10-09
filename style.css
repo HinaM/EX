@@ -127,6 +127,14 @@
   flex-direction: column;
   background-color: #f1f1f1;
 }
+.countdayslittle{
+  border-left: #d5d5d5 8px solid;
+  display: flex;
+  align-items:flex-start;
+  justify-content: center;
+  flex-direction: column;
+  background-color: #f1f1f1;
+}
 .dayscol{
   width: 100%;
   display: flex;
