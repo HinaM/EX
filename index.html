@@ -234,7 +234,7 @@
                 <div class="off-title">Popular Articles</div>
                 <div class="osusume_list py-3"v-for="i in articles.slice(0,4)" :key="i.id">
                   <div class="title">
-                    <a :href="'../forum/index.html?param=' + i.id">{{i.article_title}}</a>
+                    <a :href="forumUrl(i.id)">{{i.article_title}}</a>
                   </div>
                   <!--<p style="white-space: pre-line;">{{i.article_content}}</p>-->
                   <div class="date text-secondary">{{i.created_at}}  •  {{i.like}} LIKES</div>
@@ -245,7 +245,7 @@
 
               <div class="osusume_list py-3" v-for="i in sortByLikesDesc.slice(0,4)">
                 <div class="title">
-                  <a :href="'../forum/index.html?param=' + i.id">{{i.article_title}}</a>
+                  <a :href="forumUrl(i.id)">{{i.article_title}}</a>
                 </div>
                 <div class="date text-secondary">{{i.created_at}}  •  {{i.like}} LIKES</div>
               </div>
@@ -269,7 +269,7 @@
 
               <div class="osusume_list py-3" v-for="i in articles.slice(0,4)" :key="i.id">
                 <div class="title">
-                  <a :href="'../forum/index.html?param=' + i.id">{{i.article_title}}</a>
+                  <a :href="forumUrl(i.id)">{{i.article_title}}</a>
                 </div>
                 <!--<p style="white-space: pre-line;">{{i.article_content}}</p>-->
                 <div class="date text-secondary">{{i.created_at}}  •  {{i.like}} LIKES</div>
@@ -280,7 +280,7 @@
 
               <div class="osusume_list py-3" v-for="i in sortByLikesDesc.slice(0,4)">
                 <div class="title">
-                  <a :href="'../forum/index.html?param=' + i.id">{{i.article_title}}</a>
+                  <a :href="forumUrl(i.id)">{{i.article_title}}</a>
                 </div>
                 <div class="date text-secondary">{{i.created_at}}  •  {{i.like}} LIKES</div>
               </div>

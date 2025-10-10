@@ -12,7 +12,21 @@ new Vue({
     articles: [],
     likeorder: [],
     param: null,     // 會由網址參數帶入
-    nowForum: null
+    nowForum: null,
+
+    // ✅ 動態 base 路徑：本地為空字串；GitHub Pages 專案頁會是 "/<repo-name>"
+    base: (function () {
+      const host = window.location.hostname;
+      const isLocal = host === 'localhost' || host === '127.0.0.1';
+      if (isLocal) return ''; // 本地不需要 repo 前綴
+
+      // GitHub Pages：若是使用者主站（repo 名為 <user>.github.io），base 應為空
+      // 若是專案頁（/repo-name/...），base 應為 "/repo-name"
+      const parts = window.location.pathname.split('/').filter(Boolean); // 例如 ["forum", "index.html"]
+      // 若目前網址形如 https://<user>.github.io/forum 或 /forum/index.html
+      // 則 parts[0] 就是 repo 名
+      return parts.length > 0 ? `/${parts[0]}` : '';
+    })()
   },
   computed: {
     elapsed() {
@@ -83,14 +97,21 @@ new Vue({
     updateTime()
     setInterval(updateTime, 1000)
 
+    // 讀網址參數並查單筆
     const urlParam = new URLSearchParams(window.location.search)
-    this.param = urlParam.get('param') // 例如 ../forum/index.html?param=3
+    this.param = urlParam.get('param') // 例如 /index.html?param=3
     if (this.param) {
       this.nowFor()  // 依參數查詢單筆
     }
-
   },
   methods: {
+    // ✅ 建立 forum 連結（給模板使用）
+    forumUrl(id) {
+      // 頁面在專案 repo 下時：/repo-name/index.html?param=6
+      // 本地測試：/index.html?param=6（或相對路徑）
+      return `${this.base}/index.html?param=${id}`;
+    },
+
     onlyDate(d) {
       return new Date(d.getFullYear(), d.getMonth(), d.getDate())
     },
@@ -114,23 +135,24 @@ new Vue({
       const days = Math.round((e - mAnniv) / msPerDay)
       return { y: years, m: months, d: days }
     },
+
     async nowFor() {
-        // 若 id 欄位是數字，轉成數字；若是文字可用原字串
-        const id = isNaN(Number(this.param)) ? this.param : Number(this.param)
-  
-        const { data, error } = await supabase
-          .from('articles')
-          .select('*')
-          .eq('id', id)
-          .single() // 直接回傳一個物件
-  
-        if (error) {
-          console.error('查詢失敗：', error)
-          this.nowForum = null
-          return
-        }
-  
-        this.nowForum = data || null
+      // 若 id 欄位是數字，轉成數字；若是文字可用原字串
+      const id = isNaN(Number(this.param)) ? this.param : Number(this.param)
+
+      const { data, error } = await supabase
+        .from('articles')
+        .select('*')
+        .eq('id', id)
+        .single() // 直接回傳一個物件
+
+      if (error) {
+        console.error('查詢失敗：', error)
+        this.nowForum = null
+        return
       }
+
+      this.nowForum = data || null
+    }
   }
 })
