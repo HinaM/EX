@@ -2,9 +2,12 @@
   --brand-color: #183145;
   --text-color: #f7f7f7;
 }
+@import url('https://fonts.googleapis.com/css2?family=Kaisei+Decol&display=swap');
+
 *{
   margin: 0;
   padding: 0;
+  font-family: 'Kaisei Decol', serif;
 }
 a{
   color: var(--brand-color) !important;
