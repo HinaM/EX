@@ -6,8 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>首頁</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="./src/font.css">
     <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
-    <link rel="stylesheet" href="../src/font.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous">
     <script src="https://kit.fontawesome.com/9d0690b173.js" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
@@ -16,8 +16,14 @@
 
   <div id="app">
     <!-- 上層 Navbar -->
-    <div class="top-bar d-flex justify-content-between align-items-center" ref="topbar">
-      
+    <div class="top-bar d-flex justify-content-between align-items-center">
+      <!--
+      <div class="logo">
+        <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
+          <i class="fa-solid fa-bars me-2"></i>MORE
+        </button>
+      </div>
+    -->
       <div class="logoword d-inline-block">
         <p class="m-0 p-0"><i class="fa-regular fa-comment me-2"></i>聖苑高等學府</p>
       </div>
@@ -35,19 +41,37 @@
         
       </div>
     </div>
- 
-    <div class="top-bar-two" ref="topbar2">聖苑論壇</div>
+ <!--
+    <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+      <div class="offcanvas-header d-flex justify-content-end">
+        <div data-bs-dismiss="offcanvas" aria-label="Close" class="offc d-flex ailgn-items-center"><i class="fa-solid fa-xmark me-2"></i>CLOSE</div>
+      </div>
+      <div class="offcanvas-body">
+        <div class="off-title">Popular Articles</div>
+        <ul class="m-0 p-3">
+          <li>12</li>
+          <li>12</li>
+          <li>12</li>
+          <li>12</li>
+          <li>12</li>
+          <li>12</li>
+        </ul>
+        <div class="off-title">Popular Articles</div>
+      </div>
+    </div>
+
+  -->
+    <div class="top-bar-two">聖苑論壇</div>
   
     <!-- 下層功能列 -->
     <nav :class="['menu-bar', { fixed: isFixed }]" ref="menubar">
       <ul class="nav justify-content-center">
-        <li class="nav-item"><a class="nav-link" href="../index.html">HOME</a></li>
-        <li class="nav-item"><a class="nav-link" href="../forum.html">FORUM</a></li>
+        <li class="nav-item"><a class="nav-link" href="index.html">HOME</a></li>
+        <li class="nav-item"><a class="nav-link" href="#">FORUM</a></li>
         <li class="nav-item"><a class="nav-link" href="#">NEWS</a></li>
         <li class="nav-item"><a class="nav-link" href="#">JOBS</a></li>
       </ul>
     </nav>
-   
   
     <!-- 主內容 -->
     <main class="mt-4 mb-4">
@@ -94,34 +118,59 @@
           <div class="row mt-4 mb-4">
             <div class="content col-12 col-lg-8">
               
-
-              <div v-for="i in [nowForum]" v-if="nowForum">
-                <h2 class="mt-2 mb-2">{{ i.article_title }}</h2>
-                <div class="text-secondary">BY. {{i.aurthor}} • {{i.created_at}}</div>
-
-                <hr>
-                <p class="m-0 p-0" style="line-height: 1.8;white-space: pre-line;">{{i.article_content}}</p>
+              
+            <!--
+              <div class="osusume_list py-3"v-for="i in articles" :key="i.id">
+                <h5 class="title mb-2">
+                  <a :href="'../EX/forum/index.html?param=' + i.id">{{i.article_title}}</a>
+                </h5>
                 
-              </div>
-
-              
-              
-              
-
-              
-              
-              
-              
-              
-              
-              <div class="mt-3">
-                <div class="tag text-center">
+                
+                <div class="tag mb-2">
                   
-                  <div class="tags d-inline-block mt-2 me-2 px-2 py-1" v-for="tag in nowForum.hashtags.split('#').filter(Boolean)" :key="tag">
-                    {{ '#' + tag }}
+                    <div class="tags d-inline-block mt-2 me-2 px-2 py-1" v-for="tag in i.hashtags.split('#').filter(Boolean)" :key="tag">
+                      {{ '#' + tag }}
+                    </div>
+                </div>
+                
+                <div class="text-secondary">BY. {{i.aurthor}}  •  {{i.created_at}}  •  {{i.like}} LIKES</div>
+              </div>
+            -->
+              
+            <div class="d-flex align-items-center gap-2 my-3">
+                <button @click="setSort('new')"  :class="['btn', sortType==='new' ? 'btn-primary' : 'btn-outline-primary']">最新</button>
+                <button @click="setSort('hot')"  :class="['btn', sortType==='hot' ? 'btn-primary' : 'btn-outline-primary']">熱門</button>
+            
+                <select class="form-select form-select-sm ms-3" v-model.number="pageSize" @change="setPageSize(pageSize)" style="width:auto">
+                  <option :value="5">每頁 5</option>
+                  <option :value="10">每頁 10</option>
+                  <option :value="20">每頁 20</option>
+                </select>
+              </div>
+            
+              <!-- 列表（重點：用 pageItems） -->
+              <div v-if="loading">載入中…</div>
+              <div v-else>
+                <div class="osusume_list py-3" v-for="a in pageItems" :key="a.id">
+                  <div class="title">
+                    <a :href="forumLink(a.id)">{{ a.article_title }}</a>
                   </div>
+                  <div class="date text-secondary">{{ a.created_at }} • 👍{{ a.like || 0 }}</div>
                 </div>
               </div>
+            
+              <!-- 分頁列 -->
+              <div class="d-flex align-items-center justify-content-center gap-2 my-3">
+                <button class="btn btn-outline-secondary btn-sm" @click="goPage(page-1)" :disabled="page<=1">上一頁</button>
+                <span>第 {{ page }} / {{ totalPages }} 頁（共 {{ totalRows }} 筆）</span>
+                <button class="btn btn-outline-secondary btn-sm" @click="goPage(page+1)" :disabled="page>=totalPages">下一頁</button>
+              </div>
+            
+              <div v-if="errorMsg" class="text-danger">{{ errorMsg }}</div>
+              
+              
+              
+             
 
               
 
@@ -129,7 +178,7 @@
                 <div class="off-title">Popular Articles</div>
                 <div class="osusume_list py-3"v-for="i in articles.slice(0,4)" :key="i.id">
                   <div class="title">
-                    <a :href="'../forum/index.html?param=' + i.id">{{i.article_title}}</a>
+                    <a :href="'../EX/forum/index.html?param=' + i.id">{{i.article_title}}</a>
                   </div>
                   <!--<p style="white-space: pre-line;">{{i.article_content}}</p>-->
                   <div class="date text-secondary">{{i.created_at}}  •  {{i.like}} LIKES</div>
@@ -140,7 +189,7 @@
 
               <div class="osusume_list py-3" v-for="i in sortByLikesDesc.slice(0,4)">
                 <div class="title">
-                  <a :href="'../forum/index.html?param=' + i.id">{{i.article_title}}</a>
+                  <a :href="'../EX/forum/index.html?param=' + i.id">{{i.article_title}}</a>
                 </div>
                 <div class="date text-secondary">{{i.created_at}}  •  {{i.like}} LIKES</div>
               </div>
@@ -164,7 +213,7 @@
 
               <div class="osusume_list py-3" v-for="i in articles.slice(0,4)" :key="i.id">
                 <div class="title">
-                  <a :href="'../forum/index.html?param=' + i.id">{{i.article_title}}</a>
+                  <a :href="'../EX/forum/index.html?param=' + i.id">{{i.article_title}}</a>
                 </div>
                 <!--<p style="white-space: pre-line;">{{i.article_content}}</p>-->
                 <div class="date text-secondary">{{i.created_at}}  •  {{i.like}} LIKES</div>
@@ -175,7 +224,7 @@
 
               <div class="osusume_list py-3" v-for="i in sortByLikesDesc.slice(0,4)">
                 <div class="title">
-                  <a :href="'../forum/index.html?param=' + i.id">{{i.article_title}}</a>
+                  <a :href="'../EX/forum/index.html?param=' + i.id">{{i.article_title}}</a>
                 </div>
                 <div class="date text-secondary">{{i.created_at}}  •  {{i.like}} LIKES</div>
               </div>
@@ -206,5 +255,6 @@
 
 </body>
 <script src="app.js"></script>
+
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"></script>
 </html>
