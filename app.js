@@ -12,7 +12,7 @@ new Vue({
     articles: [],
     likeorder: [],
     page: 1,
-      pageSize: 5,     // 你要 10 / 20 都行
+      pageSize: 10,     // 你要 10 / 20 都行
       totalRows: 0,
 
       // 顯示資料（當頁）
