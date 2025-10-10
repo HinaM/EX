@@ -131,6 +131,18 @@ new Vue({
         }
   
         this.nowForum = data || null
+
+        // 格式化單一物件的日期
+        if (data && data.created_at) {
+          const d = new Date(data.created_at)
+          const Y = d.getFullYear()
+          const M = d.getMonth() + 1
+          const D = d.getDate()
+          this.nowForum = { ...data, created_at: `${Y}-${M}-${D}` }
+        } else {
+          this.nowForum = data // 沒有 created_at 就直接放
+        }
+
       }
   }
 })
