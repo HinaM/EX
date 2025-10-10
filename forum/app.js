@@ -7,7 +7,7 @@ new Vue({
   data: {
     isFixed: false,
     now: '',
-    start: '2000-10-08',
+    start: '2000-09-18',
     nowDay: new Date(),
     articles: [],
     likeorder: [],
