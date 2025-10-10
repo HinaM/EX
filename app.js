@@ -10,19 +10,7 @@ new Vue({
     start: '2000-10-08',
     nowDay: new Date(),
     articles: [],
-    likeorder: [],
-    base: (function () {
-      const host = window.location.hostname;
-      const isLocal = host === 'localhost' || host === '127.0.0.1';
-      if (isLocal) return ''; // 本地不需要 repo 前綴
-
-      // GitHub Pages：若是使用者主站（repo 名為 <user>.github.io），base 應為空
-      // 若是專案頁（/repo-name/...），base 應為 "/repo-name"
-      const parts = window.location.pathname.split('/').filter(Boolean); // 例如 ["forum", "index.html"]
-      // 若目前網址形如 https://<user>.github.io/forum 或 /forum/index.html
-      // 則 parts[0] 就是 repo 名
-      return parts.length > 0 ? `/${parts[0]}` : '';
-    })()
+    likeorder: []
   },
   computed: {
     elapsed() {
@@ -81,12 +69,6 @@ new Vue({
     setInterval(updateTime, 1000)
   },
   methods: {
-    // ✅ 建立 forum 連結（給模板使用）
-    forumUrl(id) {
-      // 頁面在專案 repo 下時：/repo-name/index.html?param=6
-      // 本地測試：/index.html?param=6（或相對路徑）
-      return `${this.base}/index.html?param=${id}`;
-    },
     onlyDate(d) {
       return new Date(d.getFullYear(), d.getMonth(), d.getDate())
     },
