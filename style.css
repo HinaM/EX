@@ -179,3 +179,18 @@ a{
 footer{
   background-color: #f1f1f1;
 }
+.btn{
+  border-radius: 0 !important;
+}
+.btn-primary{
+  background-color: var(--brand-color) !important;
+  border: 1px solid var(--brand-color) !important;
+}
+.btn-outline-primary{
+  border: 1px solid var(--brand-color) !important;
+  color: var(--brand-color) !important;
+}
+.btn-outline-primary:hover{
+  background-color: var(--brand-color) !important;
+  color: #fff !important;
+}
