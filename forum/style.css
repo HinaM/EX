@@ -173,6 +173,10 @@ a{
 .tags:hover{
   text-decoration: underline;
 }
+.comment .user{
+  background-color: #f1f1f1;
+  display:inline-flex;
+}
 footer{
   background-color: #f1f1f1;
 }

@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>首頁</title>
+    <title>聖苑論壇</title>
     <link rel="stylesheet" href="style.css">
     <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
     <link rel="stylesheet" href="../src/font.css">
@@ -102,16 +102,7 @@
                 <hr>
                 <p class="m-0 p-0" style="line-height: 1.8;white-space: pre-line;">{{i.article_content}}</p>
                 
-              </div>
 
-              
-              
-              
-
-              
-              
-              
-              
               
               
               <div class="mt-3">
@@ -123,7 +114,27 @@
                 </div>
               </div>
 
-              
+              <hr>
+
+              <div class="d-flex w100 ailgn-items-center">
+                <div class="me-3"><i class="fa-regular fa-heart me-2"></i>{{i.like}}</div>
+                <div><i class="fa-regular fa-comments me-2"></i> 10</div>
+              </div>
+
+              <div class="off-title mt-3">COMMENTS</div>
+
+              <div class="comment w-100 mt-3" v-for="i in 5">
+                
+                
+                <p class="user d-inline-block px-2 py-1">#{{i*2 -1}} 匿名吃瓜A學生</p>
+                <p>全校唯一能讓賀會長出錯的，可能只有白學妹那句「你吃飯了嗎」。</p>
+                <p class="user d-inline-block px-2 py-1">#{{i*2}} 匿名吃瓜A學生</p>
+                <p>保持冷靜，保持紀律。學習是基本義務。</p>
+                
+
+              </div>
+
+            </div>
 
               <div class="mt-3 d-inline-block d-lg-none">
                 <div class="off-title">Popular Articles</div>
