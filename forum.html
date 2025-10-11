@@ -152,12 +152,12 @@
               <div v-if="loading">載入中…</div>
               <div v-else>
                 <div class="osusume_list py-3" v-for="a in pageItems" :key="a.id">
-                  <div class="title">
+                  <h5 class="title">
                     <a :href="forumLink(a.id)">{{ a.article_title }}</a>
-                  </div>
-                  <p v-if="a.article_content.length > 50" class="text-secondary m-0 p-0">{{a.article_content.slice(0,50)}} …</p>
-                  <p v-else class="text-secondary m-0 p-0">{{a.article_content.slice(0,50)}}</p>
-                  <div class="date text-secondary">{{ a.created_at }} • {{ a.like || 0 }} LIKES</div>
+                  </h5>
+                  <p v-if="a.article_content.length > 50" class="text-secondary m-0 p-0 mt-2">{{a.article_content.slice(0,50)}} …</p>
+                  <p v-else class="text-secondary m-0 p-0 mt-2">{{a.article_content.slice(0,50)}}</p>
+                  <div class="date text-secondary mt-2">{{ a.created_at }} • {{ a.like || 0 }} LIKES</div>
                 </div>
               </div>
             
