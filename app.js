@@ -23,7 +23,8 @@ new Vue({
 
       // UI 狀態
       loading: false,
-      errorMsg: ''
+      errorMsg: '',
+    news: []
   },
   computed: {
     elapsed() {
@@ -61,6 +62,27 @@ new Vue({
     } catch (err) {
       console.error('Supabase select failed:', err)
     }
+
+    // === 讀取該文章的留言（外鍵欄位假設為 article_id） ===
+  try {
+    const { data, error } = await supabase
+      .from('news')
+      .select('*')
+      .order('id', { ascending: true })
+
+    if (error) throw error
+
+    this.news = (data || []).map(item => {
+      const d = new Date(item.created_at)
+      const Y = d.getFullYear()
+      const M = d.getMonth() + 1
+      const D = d.getDate()
+      return { ...item, created_at: `${Y}-${M}-${D}` }
+    })
+  } catch (err) {
+    console.error('new select failed:', err)
+    this.news = []
+  }
 
     // === 固定導覽列 ===
     this.$nextTick(() => {
