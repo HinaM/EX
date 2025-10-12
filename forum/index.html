@@ -121,7 +121,7 @@
                 <a id="comments_i" :href="forumLink(param)+'#comment'" @mouseover="isHoverComment = true" @mouseleave="isHoverComment = false"><i class="fa-regular fa-comments me-2" :class="isHoverComment ? 'fa-solid' : 'fa-regular'"></i> {{comments.length}}</a>
               </div>
 
-              <div class="off-title mt-3" id="comments">COMMENTS</div>
+              <div class="off-title mt-3" id="comment">COMMENTS</div>
 
               <div v-if="comments.length > 0">
                 <div class="comment w-100 mt-3" v-for="(i,index) in comments"  :key="i.id">
