@@ -10,6 +10,7 @@ new Vue({
     start: '2000-09-18',
     nowDay: new Date(),
     articles: [],
+    comments: [],
     likeorder: [],
     param: null,     // 會由網址參數帶入
     nowForum: null
@@ -26,6 +27,12 @@ new Vue({
     }
   },
   async mounted() {
+    const url = new URLSearchParams(window.location.search);
+    this.param = url.get('param');
+
+    // 型別處理：你的 id 若是數字欄位就轉數字
+    const articleId = isNaN(Number(this.param)) ? this.param : Number(this.param)
+    
     // === 讀取 Supabase 資料 ===
     try {
       const { data, error } = await supabase
@@ -47,6 +54,28 @@ new Vue({
     } catch (err) {
       console.error('Supabase select failed:', err)
     }
+
+    // === 讀取該文章的留言（外鍵欄位假設為 article_id） ===
+  try {
+    const { data, error } = await supabase
+      .from('comments')
+      .select('*')
+      .eq('article_id', this.param)   // ← 多半是這個欄位，不是用 comments.id
+      .order('id', { ascending: true })
+
+    if (error) throw error
+
+    this.comments = (data || []).map(item => {
+      const d = new Date(item.created_at)
+      const Y = d.getFullYear()
+      const M = d.getMonth() + 1
+      const D = d.getDate()
+      return { ...item, created_at: `${Y}-${M}-${D}` }
+    })
+  } catch (err) {
+    console.error('Comments select failed:', err)
+    this.comments = []
+  }
 
     // === 固定導覽列 ===
     this.$nextTick(() => {

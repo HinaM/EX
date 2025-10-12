@@ -118,21 +118,33 @@
 
               <div class="d-flex w100 ailgn-items-center">
                 <div class="me-3"><i class="fa-regular fa-heart me-2"></i>{{i.like}}</div>
-                <div><i class="fa-regular fa-comments me-2"></i> 10</div>
+                <div><i class="fa-regular fa-comments me-2"></i> {{comments.length}}</div>
               </div>
 
               <div class="off-title mt-3">COMMENTS</div>
 
-              <div class="comment w-100 mt-3" v-for="i in 5">
+              <div v-if="comments.length > 0">
+                <div class="comment w-100 mt-3" v-for="(i,index) in comments"  :key="i.id">
                 
                 
-                <p class="user d-inline-block px-2 py-1">#{{i*2 -1}} 匿名吃瓜A學生</p>
-                <p>全校唯一能讓賀會長出錯的，可能只有白學妹那句「你吃飯了嗎」。</p>
-                <p class="user d-inline-block px-2 py-1">#{{i*2}} 匿名吃瓜A學生</p>
-                <p>保持冷靜，保持紀律。學習是基本義務。</p>
+                
+                  <p class="d-inline-block user px-2 py-1">#{{index+1}} {{i.comment_name}}</p>
+
+                  <p style="white-space: pre-line;">{{i.comment_content}}</p>
+                  <p class="text-secondary">{{i.created_at}}</p>
+                  <hr>
+                </div>
+              </div>
+              <div class="comment w-100 mt-3" v-else >
+                
+                
+                
+                目前尚無留言
+                
                 
 
               </div>
+
 
             </div>
 
