@@ -119,56 +119,9 @@
             <div class="content col-12 col-lg-8">
               
               
-            <!--
-              <div class="osusume_list py-3"v-for="i in articles" :key="i.id">
-                <h5 class="title mb-2">
-                  <a :href="'../EX/forum/index.html?param=' + i.id">{{i.article_title}}</a>
-                </h5>
-                
-                
-                <div class="tag mb-2">
-                  
-                    <div class="tags d-inline-block mt-2 me-2 px-2 py-1" v-for="tag in i.hashtags.split('#').filter(Boolean)" :key="tag">
-                      {{ '#' + tag }}
-                    </div>
-                </div>
-                
-                <div class="text-secondary">BY. {{i.aurthor}}  •  {{i.created_at}}  •  {{i.like}} LIKES</div>
-              </div>
-            -->
+           
               <div v-for="i in news">{{i}}</div>
-            <div class="d-flex align-items-center gap-2 my-3">
-                <button @click="setSort('new')"  :class="['btn', sortType==='new' ? 'btn-primary' : 'btn-outline-primary']">最新</button>
-                <button @click="setSort('hot')"  :class="['btn', sortType==='hot' ? 'btn-primary' : 'btn-outline-primary']">熱門</button>
             
-                <select class="form-select form-select-sm ms-3" v-model.number="pageSize" @change="setPageSize(pageSize)" style="width:auto">
-                  <option :value="5">每頁 5</option>
-                  <option :value="10">每頁 10</option>
-                  <option :value="20">每頁 20</option>
-                </select>
-              </div>
-            
-              <!-- 列表（重點：用 pageItems） -->
-              <div v-if="loading">載入中…</div>
-              <div v-else>
-                <div class="osusume_list py-3" v-for="a in pageItems" :key="a.id">
-                  <h5 class="title">
-                    <a :href="forumLink(a.id)">{{ a.article_title }}</a>
-                  </h5>
-                  <p v-if="a.article_content.length > 50" class="text-secondary m-0 p-0 mt-2">{{a.article_content.slice(0,50)}} …</p>
-                  <p v-else class="text-secondary m-0 p-0 mt-2">{{a.article_content.slice(0,50)}}</p>
-                  <div class="date text-secondary mt-2">{{ a.created_at }} • {{ a.like || 0 }} LIKES</div>
-                </div>
-              </div>
-            
-              <!-- 分頁列 -->
-              <div class="d-flex align-items-center justify-content-center gap-2 my-3">
-                <button class="btn btn-outline-secondary btn-sm" @click="goPage(page-1)" :disabled="page<=1">上一頁</button>
-                <span>第 {{ page }} / {{ totalPages }} 頁</span>
-                <button class="btn btn-outline-secondary btn-sm" @click="goPage(page+1)" :disabled="page>=totalPages">下一頁</button>
-              </div>
-            
-              <div v-if="errorMsg" class="text-danger">{{ errorMsg }}</div>
               
               
               
