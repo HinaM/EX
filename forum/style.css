@@ -171,3 +171,18 @@ main {
 footer{
   background-color: #f1f1f1;
 }
+#heart_i, #heart_i i{
+  transition: 0.3s;
+  cursor: pointer;
+}
+#heart_i:hover i{
+  color: rgb(237, 113, 113);
+}
+#comments_i,#comments_i i{
+  transition: 0.3s;
+  cursor: pointer;
+  text-decoration: none;
+}
+#comments_i:hover i{
+  color: rgb(113, 165, 237);
+}

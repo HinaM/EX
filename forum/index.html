@@ -117,11 +117,11 @@
               <hr>
 
               <div class="d-flex w100 ailgn-items-center">
-                <div class="me-3"><i class="fa-regular fa-heart me-2"></i>{{i.like}}</div>
-                <div><i class="fa-regular fa-comments me-2"></i> {{comments.length}}</div>
+                <div class="me-3" id="heart_i" @mouseover="isHoverHeart = true" @mouseleave="isHoverHeart = false"><i class="fa-regular fa-heart me-2" :class="isHoverHeart ? 'fa-solid fa-heart' : 'fa-regular fa-heart'" ></i>{{i.like}}</div>
+                <a id="comments_i" :href="forumLink(param)+'#comment'" @mouseover="isHoverComment = true" @mouseleave="isHoverComment = false"><i class="fa-regular fa-comments me-2" :class="isHoverComment ? 'fa-solid' : 'fa-regular'"></i> {{comments.length}}</a>
               </div>
 
-              <div class="off-title mt-3">COMMENTS</div>
+              <div class="off-title mt-3" id="comments">COMMENTS</div>
 
               <div v-if="comments.length > 0">
                 <div class="comment w-100 mt-3" v-for="(i,index) in comments"  :key="i.id">

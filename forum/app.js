@@ -13,7 +13,9 @@ new Vue({
     comments: [],
     likeorder: [],
     param: null,     // 會由網址參數帶入
-    nowForum: null
+    nowForum: null,
+    isHoverHeart: false,
+    isHoverComment: false,
   },
   computed: {
     elapsed() {
@@ -172,6 +174,19 @@ new Vue({
           this.nowForum = data // 沒有 created_at 就直接放
         }
 
-      }
+    },
+
+    basePath() {
+      const isLocal = /localhost|127\.0\.0\.1/.test(location.host);
+      if (isLocal) return '';
+      const segs = window.location.pathname.split('/').filter(Boolean);
+      return segs.length ? `/${segs[0]}` : '';
+    },
+
+    // 文章詳情連結（不改 URL 的分頁，但帶 query 參數讀單篇）
+    forumLink(id) {
+      return `${this.basePath()}/forum/index.html?param=${id}`;
+    },
+
   }
 })
