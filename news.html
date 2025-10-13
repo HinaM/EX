@@ -67,8 +67,8 @@
     <nav :class="['menu-bar', { fixed: isFixed }]" ref="menubar">
       <ul class="nav justify-content-center">
         <li class="nav-item"><a class="nav-link" href="index.html">HOME</a></li>
-        <li class="nav-item"><a class="nav-link" href="#">FORUM</a></li>
-        <li class="nav-item"><a class="nav-link" href="#">NEWS</a></li>
+        <li class="nav-item"><a class="nav-link" href="forum.html">FORUM</a></li>
+        <li class="nav-item"><a class="nav-link" href="news.html">NEWS</a></li>
         <li class="nav-item"><a class="nav-link" href="#">WIKI</a></li>
       </ul>
     </nav>
@@ -118,10 +118,32 @@
           <div class="row mt-4 mb-4">
             <div class="content col-12 col-lg-8">
               
+              <h5 class="p-0 m-0"><i class="fa-regular fa-newspaper me-2"></i>發行日期：第二學期・冬季期中後週<br><i class="fa-regular fa-folder-closed me-2"></i>出版單位：聖苑高等學府新聞研究社</h5>
+              <div class="p-2 my-3 countdayslittle text-secondary">Veritas et Ordo — 真理與秩序<br>「於嚴寒中尋找真理，於傳聞中維持秩序。」</div>
               
+              <h3><i class="fa-regular fa-bell me-2"></i>校務焦點</h3>
            
-              <div v-for="i in news">{{i}}</div>
-            
+              <div v-for="(i,index) in news.filter(i => i.news_class === '校務焦點')">
+                <h5 class="title">#{{index+1}} . {{ i.news_title }}</h5>
+                <p class="m-0 p-0 text-secondary" style="white-space: pre-line;">{{ i.news_content }}</p>
+                <hr>
+              </div>
+
+              <h3><i class="fa-regular fa-user me-2"></i>人物專訪</h3>
+
+              <div v-for="(i,index) in news.filter(i => i.news_class === '人物專訪')">
+                <h5 class="title">#{{index+1}} . {{ i.news_title }}</h5>
+                <p class="m-0 p-0 text-secondary" style="white-space: pre-line;">{{ i.news_content }}</p>
+                <hr>
+              </div>
+              
+              <h3><i class="fa-regular fa-user me-2"></i>社團與文化</h3>
+
+              <div v-for="(i,index) in news.filter(i => i.news_class === '社團與文化')">
+                <h5 class="title">#{{index+1}} . {{ i.news_title }}</h5>
+                <p class="m-0 p-0 text-secondary" style="white-space: pre-line;">{{ i.news_content }}</p>
+                <hr>
+              </div>
               
               
               
