@@ -184,5 +184,5 @@ footer{
   text-decoration: none;
 }
 #comments_i:hover i{
-  color: rgb(113, 165, 237);
+  color: var(--brand-color);
 }
