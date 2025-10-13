@@ -193,3 +193,11 @@ footer{
   background-color: var(--brand-color) !important;
   color: #fff !important;
 }
+.nav-pills .nav-link, .nav-pills .nav-link:hover{
+  border-radius: 0 !important;
+  color: var(--brand-color);
+  border: 1px solid var(--brand-color);
+}
+.nav-pills .nav-link.active{
+  background-color: var(--brand-color) !important;
+}

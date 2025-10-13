@@ -116,47 +116,90 @@
           </div>
 
           <div class="row mt-4 mb-4">
+
+            
+
             <div class="content col-12 col-lg-8">
               
               <div class="p-2 my-3 countdayslittle text-secondary">Veritas et Ordo — 真理與秩序<br>「於嚴寒中尋找真理，於傳聞中維持秩序。」</div>
+              
 
+              <!--
               <h5 class="p-2 my-3"><i class="fa-regular fa-newspaper me-2"></i>發行日期：第二學期・冬季期中後週<br><i class="fa-regular fa-folder-closed me-2"></i>出版單位：聖苑高等學府新聞研究社</h5>
-              
-              <h3 class="off-title py-2"><i class="fa-regular fa-bell me-2 "></i>校務焦點</h3>
-           
-              <div v-for="(i,index) in news.filter(i => i.news_class === '校務焦點')">
-                <h4 class="title m-0 p-0 mt-3 ">#{{index+1}} . {{ i.news_title }}</h4>
-                <p class="m-0 p-0 mb-3" style="white-space: pre-line;">－－{{ i.author }}</p>
-                <p class="m-0 p-0 text-secondary" style="white-space: pre-line;">{{ i.news_content }}</p>
-                <hr>
-              </div>
+-->
 
-              <h3 class="off-title py-2"><i class="fa-regular fa-user me-2"></i>人物專訪</h3>
-
-              <div v-for="(i,index) in news.filter(i => i.news_class === '人物專訪')">
-                <h4 class="title m-0 p-0 mt-3 ">#{{index+1}} . {{ i.news_title }}</h4>
-                <p class="m-0 p-0 mb-3" style="white-space: pre-line;">－－{{ i.author }}</p>
-                <p class="m-0 p-0 text-secondary" style="white-space: pre-line;">{{ i.news_content }}</p>
-                <hr>
-              </div>
               
-              <h3 class="off-title py-2"><i class="fa-regular fa-gem me-2"></i>社團與文化</h3>
 
-              <div v-for="(i,index) in news.filter(i => i.news_class === '社團與文化')">
-                <h4 class="title m-0 p-0 mt-3 ">#{{index+1}} . {{ i.news_title }}</h4>
-                <p class="m-0 p-0 mb-3" style="white-space: pre-line;">－－{{ i.author }}</p>
-                <p class="m-0 p-0 text-secondary" style="white-space: pre-line;">{{ i.news_content }}</p>
-                <hr>
-              </div>
-              
-              <div class="tag">
+              <ul class="nav nav-pills mb-3 gap-2" id="pills-tab" role="tablist">
+                <li class="nav-item my-1" role="presentation">
+                  <button class="nav-link active" id="pills-home-tab" data-bs-toggle="pill" data-bs-target="#pills-home" type="button" role="tab" aria-controls="pills-home" aria-selected="true"><i class="fa-regular fa-bell me-2 "></i>校務焦點</button>
+                </li>
+                <li class="nav-item my-1" role="presentation">
+                  <button class="nav-link" id="pills-profile-tab" data-bs-toggle="pill" data-bs-target="#pills-profile" type="button" role="tab" aria-controls="pills-profile" aria-selected="false"><i class="fa-regular fa-user me-2"></i>人物專訪</button>
+                </li>
+                <li class="nav-item my-1" role="presentation">
+                  <button class="nav-link" id="pills-contact-tab" data-bs-toggle="pill" data-bs-target="#pills-contact" type="button" role="tab" aria-controls="pills-contact" aria-selected="false"><i class="fa-regular fa-gem me-2"></i>社團與文化</button>
+                </li>
+                <li class="nav-item my-1" role="presentation">
+                  <button class="nav-link" id="pills-disabled-tab" data-bs-toggle="pill" data-bs-target="#pills-disabled" type="button" role="tab" aria-controls="pills-disabled" aria-selected="false">下期預告</button>
+                </li>
+              </ul>
+              <div class="tab-content" id="pills-tabContent">
+
+                <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab" tabindex="0">
+                  <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab" tabindex="0">
+                    <div v-for="(i,index) in news.filter(i => i.news_class === '校務焦點')">
+                      <h4 class="title m-0 p-0 mt-3 ">#{{index+1}} . {{ i.news_title }}</h4>
+                      <p class="m-0 p-0 mb-3" style="white-space: pre-line;">－－{{ i.author }}</p>
+                      <p class="m-0 p-0 text-secondary" style="white-space: pre-line;">{{ i.news_content }}</p>
+                      <hr>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab" tabindex="0">
+                  <div v-for="(i,index) in news.filter(i => i.news_class === '人物專訪')">
+                    <h4 class="title m-0 p-0 mt-3 ">#{{index+1}} . {{ i.news_title }}</h4>
+                    <p class="m-0 p-0 mb-3" style="white-space: pre-line;">－－{{ i.author }}</p>
+                    <p class="m-0 p-0 text-secondary" style="white-space: pre-line;">{{ i.news_content }}</p>
+                    <hr>
+                  </div>
+                </div>
+
+                <div class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab" tabindex="0">
+                  <div v-for="(i,index) in news.filter(i => i.news_class === '社團與文化')">
+                    <h4 class="title m-0 p-0 mt-3 ">#{{index+1}} . {{ i.news_title }}</h4>
+                    <p class="m-0 p-0 mb-3" style="white-space: pre-line;">－－{{ i.author }}</p>
+                    <p class="m-0 p-0 text-secondary" style="white-space: pre-line;">{{ i.news_content }}</p>
+                    <hr>
+                  </div>
+                </div>
+                
+                <div class="tab-pane fade" id="pills-disabled" role="tabpanel" aria-labelledby="pills-disabled-tab" tabindex="0">
+                  <ul>
                   
-                <div class="tags d-inline-block mt-2 me-2 px-2 py-1"  v-for="i in ((news.find(n => n.news_class === '下期預告')?.news_content || '')
-              .split(/\s*#+\s*/).filter(Boolean))">
-                  {{ i }}
+                    <li class="mt-2 me-2 px-2 py-1"  v-for="i in ((news.find(n => n.news_class === '下期預告')?.news_content || '')
+                  .split(/\s*#+\s*/).filter(Boolean))">
+                      {{ i }}
+                    </li>
+                  </ul>
                 </div>
               </div>
               
+
+              
+              
+           
+              
+              <!--
+              <ul>
+                  
+                <li class="mt-2 me-2 px-2 py-1"  v-for="i in ((news.find(n => n.news_class === '下期預告')?.news_content || '')
+              .split(/\s*#+\s*/).filter(Boolean))">
+                  {{ i }}
+                </li>
+              </ul>
+              -->
              
 
               
