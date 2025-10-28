@@ -117,7 +117,7 @@
               <hr>
 
               <div class="d-flex w100 ailgn-items-center">
-                <div class="me-3" id="heart_i" @mouseover="isHoverHeart = true" @mouseleave="isHoverHeart = false"><i class="fa-regular fa-heart me-2" :class="isHoverHeart ? 'fa-solid fa-heart' : 'fa-regular fa-heart'" ></i>{{i.like}}</div>
+                <div class="me-3" id="heart_i" @mouseover="isHoverHeart = true" @mouseleave="isHoverHeart = false" @click="addHeart(i.like)"><i class="fa-regular fa-heart me-2" :class="isHoverHeart ? 'fa-solid fa-heart' : 'fa-regular fa-heart'" ></i>{{likeCount}}</div>
                 <a id="comments_i" :href="forumLink(param)+'#nick'" @mouseover="isHoverComment = true" @mouseleave="isHoverComment = false"><i class="fa-regular fa-comments me-2" :class="isHoverComment ? 'fa-solid' : 'fa-regular'"></i> {{comments.length}}</a>
               </div>
 

@@ -17,7 +17,8 @@ new Vue({
     isHoverHeart: false,
     isHoverComment: false,
     nickName: "",
-    writeComment: ""
+    writeComment: "",
+    likeCount: 0,
   },
   computed: {
     elapsed() {
@@ -54,6 +55,8 @@ new Vue({
         const D = d.getDate()
         return { ...item, created_at: `${Y}-${M}-${D}` }
       })
+
+      this.likeCount = data[0]?.like || 0;
 
     } catch (err) {
       console.error('Supabase select failed:', err)
@@ -217,6 +220,61 @@ new Vue({
             }
             location.reload(); 
       }
+    },
+    async addHeart(item) {
+      const url = new URLSearchParams(window.location.search);
+      this.param = url.get('param');
+      const { data, error: fetchError } = await supabase
+      .from('articles')
+      .select('like')
+      .eq('id', this.param)
+      .single();
+
+      if (fetchError) {
+        alert('讀取失敗');
+        return;
+      }
+
+      
+      const newLike = data.like + 1;
+      
+
+      const { error: updateError } = await supabase
+        .from('articles')
+        .update({ like: newLike })
+        .eq('id', this.param);
+
+      if (updateError) {
+        console.error('更新失敗');
+      } else {
+        console.error('成功 +1！');
+      
+      }
+
+      this.likeCount = newLike;
     }
-  }
+    /*
+    async addHeart(){
+      const url = new URLSearchParams(window.location.search);
+      this.param = url.get('param');
+      const { data, error } = await supabase
+          .from('articles')
+          .select('like')
+          .eq('id', this.param)
+          .single() // 直接回傳一個物件
+  
+        if (error) {
+          console.error('查詢失敗：', error)
+          this.nowForum = null
+          return
+        }
+      const newLike = data.like + 1;
+      const { error: updateError } = await supabase
+      .from('articles')
+      .update({ like: newLike })
+      .eq('id', this.param);
+    }
+    */
+  },
+  
 })
