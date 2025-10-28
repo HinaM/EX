@@ -190,7 +190,7 @@ new Vue({
       return `${this.basePath()}/forum/index.html?param=${id}`;
     },
     async insertComment(){
-      if(this.nickName == "" && this.writeComment == ""){
+      if(this.nickName == "" || this.writeComment == ""){
         alert("請輸入內容。");
       }else{
         const url = new URLSearchParams(window.location.search);
