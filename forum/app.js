@@ -184,6 +184,7 @@ new Vue({
           this.nowForum = data // 沒有 created_at 就直接放
         }
 
+        this.likeCount = data.like || 0;
     },
 
     basePath() {
