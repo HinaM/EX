@@ -192,3 +192,8 @@ footer{
   border-radius: 0;
   border: var(--brand-color) 1px solid;
 }
+.comment-text {
+  white-space: pre-line;    /* 處理手動輸入的換行符號 \n */
+  word-break: break-word;   /* 長字串能自動換行 */
+  overflow-wrap: break-word; /* 確保英文/數字過長也能斷行 */
+}
