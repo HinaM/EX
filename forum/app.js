@@ -190,9 +190,13 @@ new Vue({
       return `${this.basePath()}/forum/index.html?param=${id}`;
     },
     async insertComment(){
-      if(this.nickName == "" || this.writeComment == ""){
+      if(this.nickName == ""){
         alert("請輸入內容。");
-      }else{
+      }
+      else if(this.writeComment == ""){
+        alert("請輸入內容。");
+      }
+      else{
         const url = new URLSearchParams(window.location.search);
         this.param = url.get('param');
         const { data, error } = await supabase
