@@ -190,10 +190,10 @@ new Vue({
       return `${this.basePath()}/forum/index.html?param=${id}`;
     },
     async insertComment(){
-      if(this.nickName == ""){
+      if(!this.nickName.trim()){
         alert("請輸入內容。");
       }
-      else if(this.writeComment == ""){
+      else if(!this.writeComment.trim()){
         alert("請輸入內容。");
       }
       else{
