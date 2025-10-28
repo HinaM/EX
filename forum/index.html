@@ -130,7 +130,7 @@
                 
                   <p class="d-inline-block user px-2 py-1" style="word-break: break-all;">#{{index+1}} {{i.comment_name}}</p>
 
-                  <p class="m-0 comment-text">{{ i.comment_content }}</p>
+                  <p class="comment-text" v-html="fixLineBreak(i.comment_content)"></p>
                   <p class="text-secondary">{{i.created_at}}</p>
                   <hr>
                 </div>

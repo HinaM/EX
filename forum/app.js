@@ -124,6 +124,11 @@ new Vue({
 
   },
   methods: {
+    fixLineBreak(str) {
+      if (!str) return '';
+      // 把「文字版 \n」轉成 HTML 換行
+      return str.replace(/\\n/g, '<br>').replace(/\n/g, '<br>');
+    },
     onlyDate(d) {
       return new Date(d.getFullYear(), d.getMonth(), d.getDate())
     },
