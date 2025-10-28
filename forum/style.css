@@ -197,3 +197,8 @@ footer{
   word-break: break-word;   /* 長字串能自動換行 */
   overflow-wrap: break-word; /* 確保英文/數字過長也能斷行 */
 }
+.gogo{
+  border: none;
+  background-color: var(--brand-color);
+  color: var(--text-color);
+}
