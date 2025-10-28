@@ -91,7 +91,7 @@
 
           </div>
 
-          <div class="row mt-4 mb-4">
+          <div class="row mt-4 mb-4 co">
             <div class="content col-12 col-lg-8">
               
 
@@ -118,7 +118,7 @@
 
               <div class="d-flex w100 ailgn-items-center">
                 <div class="me-3" id="heart_i" @mouseover="isHoverHeart = true" @mouseleave="isHoverHeart = false"><i class="fa-regular fa-heart me-2" :class="isHoverHeart ? 'fa-solid fa-heart' : 'fa-regular fa-heart'" ></i>{{i.like}}</div>
-                <a id="comments_i" :href="forumLink(param)+'#comment'" @mouseover="isHoverComment = true" @mouseleave="isHoverComment = false"><i class="fa-regular fa-comments me-2" :class="isHoverComment ? 'fa-solid' : 'fa-regular'"></i> {{comments.length}}</a>
+                <a id="comments_i" :href="forumLink(param)+'#nick'" @mouseover="isHoverComment = true" @mouseleave="isHoverComment = false"><i class="fa-regular fa-comments me-2" :class="isHoverComment ? 'fa-solid' : 'fa-regular'"></i> {{comments.length}}</a>
               </div>
 
               <div class="off-title mt-3" id="comment">COMMENTS</div>
@@ -128,9 +128,9 @@
                 
                 
                 
-                  <p class="d-inline-block user px-2 py-1">#{{index+1}} {{i.comment_name}}</p>
+                  <p class="d-inline-block user px-2 py-1" style="word-break: break-all;">#{{index+1}} {{i.comment_name}}</p>
 
-                  <p class="m-0" style="white-space: pre-line;">{{i.comment_content}}</p>
+                  <p class="m-0" style="word-break: break-all;">{{i.comment_content}}</p>
                   <p class="text-secondary">{{i.created_at}}</p>
                   <hr>
                 </div>
@@ -144,6 +144,12 @@
                 
 
               </div>
+
+              <p class="m-0 p-0 mt-3" id="nick"><span class="text-danger" >*</span>暱稱</p>
+              <input type="text" name="" id="" v-model="nickName" class="col-12 px-2 py-1" >
+              <p class="m-0 p-0 mt-3"><span class="text-danger">*</span>留言</p>
+              <textarea name="" class="col-12 px-2 py-1" style="min-height: 100px;" v-model="writeComment" ></textarea>
+              <button @click="insertComment" class="mt-3">送出</button>
 
 
             </div>

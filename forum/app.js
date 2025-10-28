@@ -16,6 +16,8 @@ new Vue({
     nowForum: null,
     isHoverHeart: false,
     isHoverComment: false,
+    nickName: "",
+    writeComment: ""
   },
   computed: {
     elapsed() {
@@ -187,6 +189,25 @@ new Vue({
     forumLink(id) {
       return `${this.basePath()}/forum/index.html?param=${id}`;
     },
+    async insertComment(){
+      if(this.nickName == "" && this.writeComment == ""){
+        alert("請輸入內容。");
+      }else{
+        const url = new URLSearchParams(window.location.search);
+        this.param = url.get('param');
+        const { data, error } = await supabase
+            .from('comments')        // 表格名稱
+            .insert([
+              { comment_name: this.nickName, comment_content: this.writeComment, article_id: this.param }   // 欄位名稱要對！
+            ]);
 
+            if (error) {
+              console.error("插入失敗", error);
+            } else {
+              console.log("成功插入：", data);
+            }
+            location.reload(); 
+      }
+    }
   }
 })

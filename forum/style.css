@@ -186,3 +186,9 @@ footer{
 #comments_i:hover i{
   color: var(--brand-color);
 }
+.co input,.co textarea{
+  outline: none;
+  
+  border-radius: 0;
+  border: var(--brand-color) 1px solid;
+}
