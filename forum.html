@@ -157,7 +157,9 @@
                   </h5>
                   <p v-if="a.article_content.length > 50" class="text-secondary m-0 p-0 mt-2">{{a.article_content.slice(0,50)}} …</p>
                   <p v-else class="text-secondary m-0 p-0 mt-2">{{a.article_content.slice(0,50)}}</p>
-                  <div class="date text-secondary mt-2">{{ a.created_at }} • {{ a.like || 0 }} LIKES</div>
+                  <div class="date text-secondary mt-2">{{ a.created_at }} • {{ a.like || 0 }} LIKES • {{comment.filter((co) => co.article_id == a.id).length}} COMMENTS</div>
+                  
+
                 </div>
               </div>
             
@@ -183,8 +185,8 @@
                     <a :href="'../EX/forum/index.html?param=' + i.id">{{i.article_title}}</a>
                   </div>
                   <!--<p style="white-space: pre-line;">{{i.article_content}}</p>-->
-                  <div class="date text-secondary">{{i.created_at}}  •  {{i.like}} LIKES</div>
                   
+                  <div class="date text-secondary mt-2">{{ i.created_at }} • {{ i.like || 0 }} LIKES • {{comment.filter((co) => co.article_id == i.id).length}} COMMENTS</div>
                 </div>
 
                 <div class="off-title text-uppercase">TRENDING</div>
@@ -193,7 +195,8 @@
                 <div class="title">
                   <a :href="'../EX/forum/index.html?param=' + i.id">{{i.article_title}}</a>
                 </div>
-                <div class="date text-secondary">{{i.created_at}}  •  {{i.like}} LIKES</div>
+                <div class="date text-secondary mt-2">{{ i.created_at }} • {{ i.like || 0 }} LIKES • {{comment.filter((co) => co.article_id == i.id).length}} COMMENTS</div>
+
               </div>
 
               <div class="off-title mb-1 text-uppercase">Hashtags</div>
@@ -218,7 +221,8 @@
                   <a :href="'../EX/forum/index.html?param=' + i.id">{{i.article_title}}</a>
                 </div>
                 <!--<p style="white-space: pre-line;">{{i.article_content}}</p>-->
-                <div class="date text-secondary">{{i.created_at}}  •  {{i.like}} LIKES</div>
+                <div class="date text-secondary mt-2">{{ i.created_at }} • {{ i.like || 0 }} LIKES • {{comment.filter((co) => co.article_id == i.id).length}} COMMENTS</div>
+
                 
               </div>
 
@@ -228,7 +232,8 @@
                 <div class="title">
                   <a :href="'../EX/forum/index.html?param=' + i.id">{{i.article_title}}</a>
                 </div>
-                <div class="date text-secondary">{{i.created_at}}  •  {{i.like}} LIKES</div>
+                <div class="date text-secondary mt-2">{{ i.created_at }} • {{ i.like || 0 }} LIKES • {{comment.filter((co) => co.article_id == i.id).length}} COMMENTS</div>
+
               </div>
 
               <div class="off-title mb-1 text-uppercase">Hashtags</div>

@@ -161,7 +161,8 @@
                     <a :href="'../forum/index.html?param=' + i.id">{{i.article_title}}</a>
                   </div>
                   <!--<p style="white-space: pre-line;">{{i.article_content}}</p>-->
-                  <div class="date text-secondary">{{i.created_at}}  •  {{i.like}} LIKES</div>
+                  <div class="date text-secondary mt-2">{{ i.created_at }} • {{ i.like || 0 }} LIKES • {{comment.filter((co) => co.article_id == i.id).length}} COMMENTS</div>
+
                   
                 </div>
 
@@ -171,7 +172,8 @@
                 <div class="title">
                   <a :href="'../forum/index.html?param=' + i.id">{{i.article_title}}</a>
                 </div>
-                <div class="date text-secondary">{{i.created_at}}  •  {{i.like}} LIKES</div>
+                <div class="date text-secondary mt-2">{{ i.created_at }} • {{ i.like || 0 }} LIKES • {{comment.filter((co) => co.article_id == i.id).length}} COMMENTS</div>
+
               </div>
 
               <div class="off-title mb-1 text-uppercase">Hashtags</div>
@@ -196,7 +198,8 @@
                   <a :href="'../forum/index.html?param=' + i.id">{{i.article_title}}</a>
                 </div>
                 <!--<p style="white-space: pre-line;">{{i.article_content}}</p>-->
-                <div class="date text-secondary">{{i.created_at}}  •  {{i.like}} LIKES</div>
+                <div class="date text-secondary mt-2">{{ i.created_at }} • {{ i.like || 0 }} LIKES • {{comment.filter((co) => co.article_id == i.id).length}} COMMENTS</div>
+
                 
               </div>
 
@@ -206,7 +209,8 @@
                 <div class="title">
                   <a :href="'../forum/index.html?param=' + i.id">{{i.article_title}}</a>
                 </div>
-                <div class="date text-secondary">{{i.created_at}}  •  {{i.like}} LIKES</div>
+                <div class="date text-secondary mt-2">{{ i.created_at }} • {{ i.like || 0 }} LIKES • {{comment.filter((co) => co.article_id == i.id).length}} COMMENTS</div>
+
               </div>
 
               <div class="off-title mb-1 text-uppercase">Hashtags</div>

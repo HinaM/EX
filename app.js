@@ -24,7 +24,9 @@ new Vue({
       // UI 狀態
       loading: false,
       errorMsg: '',
-    news: []
+    news: [],
+    comment: [],
+    commentCount: 0
   },
   computed: {
     elapsed() {
@@ -107,6 +109,8 @@ new Vue({
     setInterval(updateTime, 1000)
 
     await this.loadPage(1);
+
+    this.fetchArticles();
     
   },
   methods: {
@@ -220,7 +224,29 @@ new Vue({
       if (!['new', 'hot'].includes(type)) return;
       this.sortType = type;
       await this.loadPage(1);
-    }
+    },
+
+    async fetchArticles() {
+      const { data, error } = await supabase
+          .from('comments')
+          .select('*')
+          .order('id', { ascending: true })
+      
+      if (error) {
+          console.error('查詢失敗：', error)
+          this.comment = []
+          
+          return
+      }
+  
+          
+      this.comment = data || []
+      
+    },
+
+  
+    
+    
   },
 
   

@@ -19,6 +19,8 @@ new Vue({
     nickName: "",
     writeComment: "",
     likeCount: 0,
+    comment: [],
+    commentCount: 0
   },
   computed: {
     elapsed() {
@@ -124,6 +126,8 @@ new Vue({
     if (this.param) {
       this.nowFor()  // 依參數查詢單筆
     }
+
+    this.fetchArticles();
 
   },
   methods: {
@@ -253,7 +257,24 @@ new Vue({
       }
 
       this.likeCount = newLike;
-    }
+    },
+    async fetchArticles() {
+      const { data, error } = await supabase
+          .from('comments')
+          .select('*')
+          .order('id', { ascending: true })
+      
+      if (error) {
+          console.error('查詢失敗：', error)
+          this.comment = []
+          
+          return
+      }
+  
+          
+      this.comment = data || []
+      
+    },
     /*
     async addHeart(){
       const url = new URLSearchParams(window.location.search);
